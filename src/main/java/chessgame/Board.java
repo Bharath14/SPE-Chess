@@ -102,7 +102,7 @@ public class Board{
     public String toString() {
         return "Board{" +
                 "cells=" + Arrays.toString(this.cells) +
-                ", whitePieces=" + Arrays.toString(this.whitePieces) +
+                ", whitePieces =" + Arrays.toString(this.whitePieces) +
                 ", blackPieces=" + Arrays.toString(this.blackPieces) +
                 '}';
     }
