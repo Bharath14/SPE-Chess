@@ -11,5 +11,5 @@ module com.example.spechess {
     requires eu.hansolo.tilesfx;
 
     opens com.example.spechess to javafx.fxml;
-    exports com.example.spechess;
+    exports gui;
 }

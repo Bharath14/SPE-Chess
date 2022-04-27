@@ -1,5 +1,6 @@
-package chessgame;
+package chessgame.game_;
 
+import chessgame.Cell;
 import javafx.util.Pair;
 
 import java.util.List;

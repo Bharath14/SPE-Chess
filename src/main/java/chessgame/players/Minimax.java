@@ -1,8 +1,9 @@
-package chessgame.ai;
+package chessgame.players;
 
 import java.util.*;
 
 import chessgame.*;
+import chessgame.game_.Game;
 import javafx.util.Pair;
 
 
@@ -17,7 +18,7 @@ public class Minimax extends Ai {
     }
 
     @Override
-    public List<Pair<Pair<Cell, Cell>, Integer>> depth_1( List<Pair<Cell, Cell>> filteredCells, Game game,int alpha, int beta)
+    public List<Pair<Pair<Cell, Cell>, Integer>> depth_1(List<Pair<Cell, Cell>> filteredCells, Game game, int alpha, int beta)
     {
         List<Pair<Pair<Cell, Cell>, Integer>> moveValue = new ArrayList<Pair<Pair<Cell, Cell>, Integer>>();
         for (Pair<Cell, Cell> move : filteredCells) {

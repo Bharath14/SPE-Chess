@@ -1,12 +1,14 @@
-package chessgame.ai;
+package chessgame.players;
 import chessgame.*;
+import chessgame.game_.Game;
+import chessgame.game_.GameUtils;
 import chessgame.pieces.*;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Ai extends Player{
+public abstract class Ai extends Player {
     public Ai(PlayerType type, Color color)
     {
         super(type,color);

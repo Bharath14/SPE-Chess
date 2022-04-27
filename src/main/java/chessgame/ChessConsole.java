@@ -1,10 +1,15 @@
 package chessgame;
 
-import chessgame.ai.*;
+import chessgame.game_.Game;
+import chessgame.game_.GameInfo;
+import chessgame.game_.GameStatus;
+import chessgame.players.*;
 
-import  java.util.*;
+import java.util.Scanner;
 
-import static chessgame.GameStatus.*;
+import static chessgame.game_.GameStatus.BLACKWINS;
+import static chessgame.game_.GameStatus.WHITEWINS;
+
 
 public class ChessConsole {
     public static void movehuman(Game game, Cell[][] cells) {

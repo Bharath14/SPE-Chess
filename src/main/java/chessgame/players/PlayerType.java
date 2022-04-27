@@ -1,4 +1,4 @@
-package chessgame.ai;
+package chessgame.players;
 
 public enum PlayerType {
     Human, Minimax, AlphaBeta

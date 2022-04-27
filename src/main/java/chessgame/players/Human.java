@@ -1,6 +1,8 @@
-package chessgame.ai;
+package chessgame.players;
 
 import chessgame.*;
+import chessgame.game_.Game;
+import chessgame.game_.GameUtils;
 import chessgame.pieces.Pawn;
 import chessgame.pieces.PieceType;
 import javafx.util.Pair;

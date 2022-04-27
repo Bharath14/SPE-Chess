@@ -1,5 +1,7 @@
-package chessgame;
+package chessgame.game_;
 
+import chessgame.Cell;
+import chessgame.Color;
 import chessgame.pieces.PieceType;
 import javafx.util.Pair;
 

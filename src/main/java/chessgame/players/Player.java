@@ -1,8 +1,8 @@
-package chessgame.ai;
+package chessgame.players;
 
 import chessgame.Cell;
 import chessgame.Color;
-import chessgame.Game;
+import chessgame.game_.Game;
 
 public abstract class Player {
     private Color playercolor ;

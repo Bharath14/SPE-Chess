@@ -1,4 +1,4 @@
-package chessgame.ai;
+package chessgame.players;
 
 import chessgame.Color;
 
