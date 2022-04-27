@@ -1,10 +1,9 @@
 package chessgame.pieces;
 
-import chessgame.Cell;
-import chessgame.Color;
-import chessgame.Position;
-
 import java.util.ArrayList;
+import chessgame.Color;
+import chessgame.Cell;
+import chessgame.Position;
 
 public final class Knight extends Piece {
     private final static int[] X_DIRECTIONS={-1,-2,-1,-2,1,2,1,2};

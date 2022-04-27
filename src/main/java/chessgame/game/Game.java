@@ -28,6 +28,7 @@ public class Game{
         this.gameStatus = GameStatus.CONTINUE;//DEFAULT
         this.history = new ArrayList<>();
         this.moveHistory = new ArrayList<Pair<Cell, Cell>>();
+        this.history.add("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w");
     }
 
     //if u need a deep copy of a game then first convert it into fen & then simply do: game.Game deepcopy = new game.Game(fen,p1,p2);
@@ -92,9 +93,9 @@ public class Game{
         return this.history;
     }
 
-    /*public void storeToHistory(){
-        this.history.add(FENUtils.getFen(this));
-    }*/
+    public void storeToHistory(){
+        this.history.add(this.currentFEN());
+    }
 
     public GameStatus getGameStatus(){
         return this.gameStatus;
@@ -199,29 +200,29 @@ public class Game{
         source.removePiece();
     }
 
-    public void playTurn(Cell source, Cell destination){
-        //this.storeToHistory();
-
-        if(source.getPiece().getType()==PieceType.PAWN && ((Pawn)(source.getPiece())).checkPawnPromotion(source) && this.getBlackPlayer() instanceof Human && this.getWhitePlayer() instanceof Human) {
-            Piece sourcePiece = source.getPiece();
-            sourcePiece.setLife(0);
-            System.out.println("Pawn promotion");
-            int flag=0;
-            Piece newPiece = null;
-            while(flag==0) {
-                System.out.println("Enter piece type (All letters in uppercase):");
-                Scanner sc = new Scanner(System.in);
-                String pieceType = sc.nextLine();
-                newPiece = PieceFactory.createPromotionPiece(pieceType, sourcePiece);
-                if (newPiece != null) {
-                    flag=1;
-                }
-                else{
-                    System.out.println("Invalid piece type!");
-                }
+    public void playTurnPromotion(Cell source, Cell destination,String pieceType){
+        Piece sourcePiece = source.getPiece();
+        sourcePiece.setLife(0);
+        //System.out.println("Pawn promotion");
+        int flag=0;
+        Piece newPiece = null;
+        while(flag==0) {
+            //System.out.println("Enter piece type (All letters in uppercase):");
+            //Scanner sc = new Scanner(System.in);
+            //String pieceType = sc.nextLine();
+            newPiece = PieceFactory.createPromotionPiece(pieceType, sourcePiece);
+            if (newPiece != null) {
+                flag=1;
             }
-            source.setPiece(newPiece);
+            else{
+                //System.out.println("Invalid piece type!");
+            }
         }
+        source.setPiece(newPiece);
+        playTurn(source,destination);
+    }
+
+    public void playTurn(Cell source, Cell destination){
 
         // if castle move then have to move rook as well
         if(source.getPiece().getType()==PieceType.KING){
@@ -247,7 +248,8 @@ public class Game{
         //System.out.println(this.getCurrentTurn().toCharacter());
         //System.out.println("Color Change");
         GameUtils.checkStatus(this);
-
+        this.storeToHistory();
+        //System.out.println("e");
     }
 
     public List<Pair<Cell, Cell>> getMoveHistory() {

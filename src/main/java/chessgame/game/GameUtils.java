@@ -39,18 +39,19 @@ public final class GameUtils{
         return finalMoves;
     }
 
-    /*public static boolean threefoldRepetition(Game game){
+    public static boolean threefoldRepetition(Game game){
         return repetition(game) >= 3;
     }
     public static int repetition(Game game){
         List<String> history = game.getHistory();
-        String current = GameInfo.FENBoard(game);
+        String current = game.currentFEN();
         int repeat = 0;
         for(String states: history)
             if(states.equals(current))
                 repeat++;
+        System.out.println(repeat);
         return repeat;
-    }*/
+    }
 
     // isInCheck() method checks whether currentTurn's king is in check or not
     public static boolean isInCheck(Cell[][] cells, Color color){
@@ -110,7 +111,8 @@ public final class GameUtils{
     }
 
     public static void checkStatus(Game game){
-        if(fiftyMoveRule(game) || staleMate(game) || insufficientMating(game) /*|| threefoldRepetition(game)*/){
+        System.out.println("s");
+        if(fiftyMoveRule(game) || staleMate(game) || insufficientMating(game) || threefoldRepetition(game)){
             game.setGameStatus(GameStatus.DRAW);
         }
         else if(checkMate(game)){

@@ -3,6 +3,7 @@ package chessgame.pieces;
 import chessgame.Cell;
 import chessgame.Color;
 import chessgame.Position;
+import java.lang.Math;
 
 import java.util.ArrayList;
 
