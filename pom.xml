@@ -151,7 +151,7 @@
                         <configuration>
                             <archive>
                                 <manifest>
-                                    <mainClass>com.example/com.example.ChessGUI</mainClass>
+                                    <mainClass>gui/gui.ChessGUI</mainClass>
                                 </manifest>
                             </archive>
                             <descriptorRefs>
