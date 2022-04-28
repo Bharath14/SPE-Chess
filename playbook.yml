@@ -5,5 +5,5 @@
   tasks:
     - name: Pull calculator image
       docker_image:
-        name: ellanti14/Chess
+        name: ellanti14/chess
         source: pull
