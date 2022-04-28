@@ -1,14 +1,16 @@
 package chessgame.players;
-import chessgame.*;
+
+import chessgame.Cell;
+import chessgame.Color;
 import chessgame.game_.Game;
 import chessgame.game_.GameUtils;
-import chessgame.pieces.*;
+import chessgame.pieces.Piece;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Ai extends Player {
+public abstract class Ai extends Player{
     public Ai(PlayerType type, Color color)
     {
         super(type,color);
@@ -41,8 +43,8 @@ public abstract class Ai extends Player {
         boolean res = this.setSource(source, game);
         if(res) {
             if (source != null && dest != null) {
-                        game.playTurn(source, dest);
-                        return true;
+                game.playTurn(source, dest);
+                return true;
             }
         }
         return false;
@@ -57,15 +59,15 @@ public abstract class Ai extends Player {
             return null;
         }
         else if (depth == 1) {
-            moveValue = depth_1(filteredCells, game, Integer.MIN_VALUE, Integer.MAX_VALUE);
+            moveValue = depth_1(filteredCells, game, alpha, beta);
         }
         else {
-            moveValue = depthGreaterthanZero(filteredCells, game, depth, Integer.MIN_VALUE, Integer.MAX_VALUE);
+            moveValue = depthGreaterthanZero(filteredCells, game, depth, alpha, beta);
         }
 
-        if (game.getCurrentTurn().getColor() == this.getColor()) {
+        if (game.getCurrentTurn().getColor() == Color.BLACK) {
             if(moveValue.size() !=0) {
-                return max(moveValue);
+                return min(moveValue);
             }
             else
             {
@@ -73,7 +75,7 @@ public abstract class Ai extends Player {
             }
         } else {
             if(moveValue.size() !=0) {
-                return min(moveValue);
+                return max(moveValue);
             }
             else
             {
