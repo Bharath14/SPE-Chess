@@ -1,0 +1,2 @@
+[ubuntu18]
+172.16.135.135 ansible_user=bharath

@@ -1,0 +1,9 @@
+---
+- name: Pull docker image from dockerHub
+  hosts: ubuntu18
+  remote_user : bharath
+  tasks:
+    - name: Pull calculator image
+      docker_image:
+        name: ellanti14/Chess
+        source: pull
