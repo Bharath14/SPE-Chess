@@ -1,5 +1,6 @@
 FROM adoptopenjdk/openjdk11:alpine
-RUN apk update && apk add libx11 mesa-gl gtk+3.0 mesa-dri-swrast mesa-demos && apk update
+RUN apt-get update && apt-get install libgtk-3-0 libglu1-mesa -y && apt-get update
+#RUN apk update && apk add libx11 mesa-gl gtk+3.0 mesa-dri-swrast mesa-demos && apk update
 COPY ./target/SPE-Chess-1.0-SNAPSHOT-jar-with-dependencies.jar ./
 COPY javafx-sdk-11.0.2 javafx-sdk-11.0.2
 WORKDIR ./
