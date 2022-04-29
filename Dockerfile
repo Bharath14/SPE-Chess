@@ -1,4 +1,4 @@
-FROM cirepo/java-11-openjdk
+FROM openjdk:11.0.14-jdk
 COPY ./target/SPE-Chess-1.0-SNAPSHOT-jar-with-dependencies.jar ./
 COPY javafx-sdk-11.0.2 javafx-sdk-11.0.2
 WORKDIR ./
