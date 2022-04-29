@@ -1,4 +1,4 @@
-FROM openjdk:11.0.15
+FROM java-11-openjdk-amd64
 COPY ./target/SPE-Chess-1.0-SNAPSHOT-jar-with-dependencies.jar ./
 COPY javafx-sdk-11.0.2 javafx-sdk-11.0.2
 WORKDIR ./
