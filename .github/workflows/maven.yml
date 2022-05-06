@@ -1,0 +1,48 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: Java CI with Maven
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: maven
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
+      
+  Docker-Image-Build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+          
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag ${{secrets.Docker_ID}}/chess:latest   
+      
+    - name: List files in the repository
+      run: |
+          ls ${{ github.workspace }}
+          
+    - name: Docker Login
+      env: 
+        Docker_ID: ${{secrets.Docker_ID}}
+        Docker_PWD: ${{secrets.Docker_PWD}}
+      run: docker login -u $Docker_ID -p $Docker_PWD
+   # - name : Docker tag
+    #  run: docker tag  chess:latest ${{secrets.Docker_ID}}/chess:latest
+    - name: Docker push
+      run: docker push ${{secrets.Docker_ID}}/chess:latest
