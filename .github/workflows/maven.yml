@@ -40,8 +40,8 @@ jobs:
     - name: Docker Login
       env: 
         Docker_ID: ${{secrets.Docker_ID}}
-        Docker_PSWD: ${{secrets.Docker_PWD}}
-      run: docker login -u $Docker_ID -p $Docker_PSWD
+        Docker_PWD: ${{secrets.Docker_PWD}}
+      run: docker login -u $Docker_ID -p $Docker_PWD
       
     - name: Docker push
       run: docker push ${{secrets.Docker_ID}}/chess
