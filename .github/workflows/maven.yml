@@ -43,6 +43,6 @@ jobs:
         Docker_PWD: ${{secrets.Docker_PWD}}
       run: docker login -u $Docker_ID -p $Docker_PWD
     - name : Docker tag
-      run: docker tag ${{secrets.Docker_ID}}/chess
+      run: docker tag  chess:$(date +%s) ${{secrets.Docker_ID}}/chess:latest
     - name: Docker push
-      run: docker push ${{secrets.Docker_ID}}/chess
+      run: docker push ${{secrets.Docker_ID}}/chess:latest
