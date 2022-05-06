@@ -31,7 +31,7 @@ jobs:
     - uses: actions/checkout@v3
           
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag chess:$(date +%s)   
+      run: docker build . --file Dockerfile --tag ${{secrets.Docker_ID}}/chess:latest   
       
     - name: List files in the repository
       run: |
@@ -42,7 +42,7 @@ jobs:
         Docker_ID: ${{secrets.Docker_ID}}
         Docker_PWD: ${{secrets.Docker_PWD}}
       run: docker login -u $Docker_ID -p $Docker_PWD
-    - name : Docker tag
-      run: docker tag  chess:$(date +%s) ${{secrets.Docker_ID}}/chess:latest
+   # - name : Docker tag
+    #  run: docker tag  chess:latest ${{secrets.Docker_ID}}/chess:latest
     - name: Docker push
       run: docker push ${{secrets.Docker_ID}}/chess:latest
