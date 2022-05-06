@@ -8,7 +8,6 @@ RUN apt-get install -y xdg-utils
 RUN apt-get install libfile-mimeinfo-perl
 RUN apt-get install desktop-file-utils
 RUN apt-get -y install firefox
-RUN apt-get install eog
 
 EXPOSE 8887
 #RUN apk update && apk add libx11 mesa-gl gtk+3.0 mesa-dri-swrast mesa-demos && apk update
