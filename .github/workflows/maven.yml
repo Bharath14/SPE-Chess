@@ -24,3 +24,24 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+      
+  Docker-Image-Build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+          
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag chess:$(date +%s)   
+      
+    - name: List files in the repository
+      run: |
+          ls ${{ github.workspace }}
+          
+    - name: Docker Login
+      env: 
+        Docker_ID: ${{secrets.Docker_ID}}
+        Docker_PSWD: ${{secrets.Docker_PWD}}
+      run: docker login -u $Docker_ID -p $Docker_PSWD
+      
+    - name: Docker push
+      run: docker push ${{secrets.Docker_ID}}/chess
