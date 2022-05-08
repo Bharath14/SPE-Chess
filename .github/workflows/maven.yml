@@ -37,7 +37,7 @@ jobs:
       with:
         path: ${{ github.workspace }}
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ${{secrets.Docker_ID}}/chess:latest   
+      run: docker build . --file Dockerfile --tag ${{secrets.Docker_ID}}/chess:latest --build-arg WORKDIR=${{ github.workspace }}  
           
     - name: Docker Login
       env: 
