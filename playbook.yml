@@ -1,9 +1,11 @@
 ---
 - name: Pull docker image from dockerHub
   hosts: ubuntu18
+  become: yes
+  become_user: root
   remote_user : bharath
   tasks:
-    - name: Pull calculator image
+    - name: Pull chess image
       docker_image:
         name: ellanti14/chess
         source: pull

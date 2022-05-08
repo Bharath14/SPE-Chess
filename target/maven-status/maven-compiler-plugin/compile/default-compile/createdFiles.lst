@@ -7,8 +7,8 @@ gui/ChessGUI$1.class
 gui/ChessGUI$4.class
 chessgame/ChessConsole$1.class
 chessgame/players/PlayerType.class
-chessgame/game_/GameStatus.class
 chessgame/players/Ai.class
+chessgame/game_/GameStatus.class
 gui/ChessGUI$3.class
 module-info.class
 chessgame/pieces/PieceFactory.class
@@ -25,8 +25,8 @@ chessgame/pieces/Knight.class
 chessgame/pieces/Bishop.class
 chessgame/ChessConsole.class
 chessgame/Board.class
-chessgame/pieces/Pawn.class
 chessgame/players/Minimax.class
+chessgame/pieces/Pawn.class
 gui/ChessGUI$2.class
 chessgame/pieces/Rook.class
 chessgame/game_/Game.class

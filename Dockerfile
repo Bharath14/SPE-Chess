@@ -16,6 +16,7 @@ COPY ./src/main/java/gui/pictures/BlackBishop.png ./
 COPY javafx-sdk-11.0.2 javafx-sdk-11.0.2
 WORKDIR ./
 #CMD ["java", "-jar", "SPE-Chess-1.0-SNAPSHOT-jar-with-dependencies.jar"]
-#CMD ["java","--module-path","/javafx-sdk-11.0.2/lib","--add-modules","javafx.controls,javafx.fxml","-jar","SPE-Chess-1.0-SNAPSHOT-jar-with-dependencies.jar"]
-ENTRYPOINT java --module-path /javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml -jar SPE-Chess-1.0-SNAPSHOT-jar-with-dependencies.jar -Dprism.verbose=true
+CMD ["java","--module-path","/javafx-sdk-11.0.2/lib","--add-modules","javafx.controls,javafx.fxml","-jar","SPE-Chess-1.0-SNAPSHOT-jar-with-dependencies.jar"]
+#ENTRYPOINT java --module-path /javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml -jar SPE-Chess-1.0-SNAPSHOT-jar-with-dependencies.jar -Dprism.verbose=true
 #java --module-path /javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml -jar SPE-Chess-1.0-SNAPSHOT-jar-with-dependencies.jar
+#docker run -it --net=host -e DISPLAY -v /tmp/.X11-unix <image-name> bash
