@@ -24,6 +24,10 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    
+    - name: List files in the repository
+      run: |
+          ls ${{ github.workspace }}
       
   Docker-Image-Build:
     needs: build
@@ -33,10 +37,6 @@ jobs:
           
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag ${{secrets.Docker_ID}}/chess:latest   
-      
-    - name: List files in the repository
-      run: |
-          ls ${{ github.workspace }}
           
     - name: Docker Login
       env: 
