@@ -1,2 +1,2 @@
 [ubuntu18]
-172.16.130.171 ansible_user=bharath
+172.16.130.171 ansible_user=bharath ansible_sudo_pass=ramukiran14
