@@ -46,3 +46,14 @@ jobs:
     #  run: docker tag  chess:latest ${{secrets.Docker_ID}}/chess:latest
     - name: Docker push
       run: docker push ${{secrets.Docker_ID}}/chess:latest
+      
+  deploy_code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Ansible playbook
+        uses: actions/checkout@v3
+        with:
+          playbook: playbook.yml # path to your Ansible playbook
+          directory: ./
+          key: ${{ secrets.ANSIBLE_SSH_PRIVATE_KEY }} # the ssh private key for ansible to use to connect to the servers, stored as "ansible_ssh_private_key" in the GitHub secrets
+          inventory: inventory # the ansible inventory to use, stored as "ansible_inventory" in the GitHub secrets
