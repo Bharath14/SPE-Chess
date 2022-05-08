@@ -343,7 +343,7 @@ public class ChessGUI extends Application {
                 Piece currentPiece=cells[i][j].getPiece();
                 if(currentPiece==null){continue;}
                 chessgame.Color pieceColor = currentPiece.getColor();
-                String base = "file:"+System.getProperty("user.dir")+"/src/main/java/gui/pictures/";
+                String base = "file:src/main/resources/pictures/";
                 //System.out.println("Working Directory = " + System.getProperty("user.dir"));
                 //System.out.println("x");
                 String picture;
@@ -374,7 +374,7 @@ public class ChessGUI extends Application {
                         break;
                 }
                 //System.out.println(picture);
-
+                //java.net.URL logoOneUrl = getClass().getResource(base+picture);
                     Image pic = new Image(base + picture);
                     ImageView toPlace = new ImageView(pic);
                     toPlace.setPreserveRatio(true);

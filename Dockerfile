@@ -11,10 +11,22 @@ RUN apt update && apt install libgtk-3-0 libglu1-mesa -y && apt update
 
 EXPOSE 8887
 #RUN apk update && apk add libx11 mesa-gl gtk+3.0 mesa-dri-swrast mesa-demos && apk update
-COPY ./target/SPE-Chess-1.0-SNAPSHOT-jar-with-dependencies.jar ./
-COPY ./src/main/java/gui/pictures/BlackBishop.png ./
+RUN mkdir IdeaProjects
+RUN cd IdeaProjects
+RUN mkdir SPE-Chess
+RUN cd SPE-Chess
+RUN mkdir target
+RUN mkdir src
+RUN cd src
+RUN mkdir main
+RUN cd main
+RUN mkdir resources
+RUN cd resources
+RUN mkdir pictures
+COPY ./target/SPE-Chess-1.0-SNAPSHOT-jar-with-dependencies.jar ./IdeaProjects/SPE-Chess/target/
+COPY ./src/main/resources/pictures ./IdeaProjects/SPE-Chess/src/main/resources/pictures/
 COPY javafx-sdk-11.0.2 javafx-sdk-11.0.2
-WORKDIR ./
+WORKDIR ./IdeaProjects/SPE-Chess/
 #CMD ["java", "-jar", "SPE-Chess-1.0-SNAPSHOT-jar-with-dependencies.jar"]
 CMD ["java","--module-path","/javafx-sdk-11.0.2/lib","--add-modules","javafx.controls,javafx.fxml","-jar","SPE-Chess-1.0-SNAPSHOT-jar-with-dependencies.jar"]
 #ENTRYPOINT java --module-path /javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml -jar SPE-Chess-1.0-SNAPSHOT-jar-with-dependencies.jar -Dprism.verbose=true
