@@ -36,7 +36,7 @@ jobs:
     - uses: actions/checkout@v3
       with:
         path: ${{ github.workspace }}
-    - run: Copy 'target/' '${{ github.workspace }}/target'
+    - run: Copy '${{ github.workspace }}/target' 'target/'
           
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag ${{secrets.Docker_ID}}/chess:latest   
