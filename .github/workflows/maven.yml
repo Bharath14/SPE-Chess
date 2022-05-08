@@ -27,16 +27,17 @@ jobs:
     
     - name: List files in the repository
       run: |
-          ls ${{ github.workspace }}
+          ls ${{ github.workspace }} -a
       
   Docker-Image-Build:
     needs: build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-          
+      with:
+        path: ${{ github.workspace }}
     - name: Build the Docker image
-      run: docker build . --file ${{ github.workspace }}/Dockerfile --tag ${{secrets.Docker_ID}}/chess:latest   
+      run: docker build . --file Dockerfile --tag ${{secrets.Docker_ID}}/chess:latest  
           
     - name: Docker Login
       env: 
