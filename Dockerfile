@@ -11,7 +11,7 @@ RUN apt update && apt install libgtk-3-0 libglu1-mesa -y && apt update
 
 EXPOSE 8887
 #RUN apk update && apk add libx11 mesa-gl gtk+3.0 mesa-dri-swrast mesa-demos && apk update
-COPY /github/workspace/target/SPE-Chess-1.0-SNAPSHOT-jar-with-dependencies.jar ./
+COPY /home/runner/work/SPE-Chess/SPE-Chess/target/SPE-Chess-1.0-SNAPSHOT-jar-with-dependencies.jar ./
 COPY ./src/main/java/gui/pictures/BlackBishop.png ./
 COPY javafx-sdk-11.0.2 javafx-sdk-11.0.2
 WORKDIR ./
