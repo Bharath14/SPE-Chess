@@ -26,6 +26,7 @@ jobs:
       run: mvn -B package --file pom.xml
       
   Docker-Image-Build:
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -48,6 +49,7 @@ jobs:
       run: docker push ${{secrets.Docker_ID}}/chess:latest
       
   deploy_code:
+    needs: Docker-Image-Build
     runs-on: ubuntu-latest
     steps:
       - name: Run Ansible playbook
