@@ -42,7 +42,7 @@ public class ChessGUI extends Application {
     private static Player playerBlack;
     private static Game game = new Game(playerWhite,playerBlack);
     private static Label whosTurn = new Label("Currently White: Human's turn");// + game.getCurrentTurn().toCharacter() + "'s turn.");
-    //private static Label turnNumber = new Label("Turn: " + game.getTurn());
+    //private static Label turnNumber = new Label("Turn: " + game.getTurn()x);
     //private static Label fiftyMove = new Label("Fifty-move Rule: " + game.getPeace());
     //private static Label repetition = new Label("Repetition: " + GameHelper.repetition(game));
     private static Label fen = new Label("FEN: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w");
