@@ -9,6 +9,7 @@ module com.example.spechess {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires org.apache.logging.log4j;
 
     opens com.example.spechess to javafx.fxml;
     exports gui;

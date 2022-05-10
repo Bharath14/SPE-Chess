@@ -9,10 +9,12 @@ import javafx.util.Pair;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import java.util.Scanner;
 
 public class Game{
-
+    private static final Logger logger = LogManager.getLogger(Game.class);
     private Board board;
     private Player currentTurn;
     //players[0]-> white player, players[1]-> black player
@@ -198,7 +200,7 @@ public class Game{
         else if(sourcePiece.getType() == PieceType.KING) {
             ((King) sourcePiece).setIsMoved(1);
         }
-
+        logger.info(sourcePiece.getType().toString()+sourcePiece.getColor().toString());
         source.removePiece();
     }
 
