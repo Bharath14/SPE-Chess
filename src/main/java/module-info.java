@@ -1,4 +1,4 @@
-module com.example.spechess {
+module chess.gui {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -11,6 +11,6 @@ module com.example.spechess {
     requires eu.hansolo.tilesfx;
     requires org.apache.logging.log4j;
 
-    opens com.example.spechess to javafx.fxml;
-    exports gui;
+    opens chess.gui to javafx.fxml;
+    exports chess.gui;
 }
