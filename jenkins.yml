@@ -1,0 +1,44 @@
+  pipeline {
+    environment {
+    registry = "ellanti14/chess"
+    registryCredential = "1"
+    dockerimage = ""
+    }
+    
+    agent any
+    stages {
+  stage("Step 1 : Git clone") {
+    steps {
+    git "https://github.com/Bharath14/SPE-Chess.git"
+    }
+  }
+  stage("Step 2 : Build Project") {
+    steps {
+    sh "mvn clean install"
+    }
+  }
+  stage("Step 3 : Docker Build") {
+    steps {
+    script {
+    dockerimage = docker.build registry + ":latest"
+    }
+    }
+  }
+  stage("Step 4 : Docker Push") {
+    steps {
+    script {
+    docker.withRegistry('', registryCredential){
+    dockerimage.push()
+    }
+    }
+    }
+  }
+  stage("Step 5 : Ansible Deploy") {
+    steps {
+    script {
+    ansiblePlaybook colorized: true, disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory', playbook: 'playbook.yml'
+  }
+  }
+  }
+  }
+  }
