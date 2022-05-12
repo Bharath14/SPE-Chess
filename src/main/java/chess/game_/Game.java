@@ -203,7 +203,6 @@ public class Game{
         else if(sourcePiece.getType() == PieceType.KING) {
             ((King) sourcePiece).setIsMoved(1);
         }
-        logger.info(sourcePiece.getType().toString()+sourcePiece.getColor().toString());
         source.removePiece();
     }
 
@@ -254,6 +253,7 @@ public class Game{
         this.changeCurrentTurn();
         //System.out.println(this.getCurrentTurn().toCharacter());
         //System.out.println("Color Change");
+        logger.info(source.getPiece().getType().toString()+source.getPiece().getColor().toString());
         GameUtils.checkStatus(this);
         this.storeToHistory();
         //System.out.println("e");

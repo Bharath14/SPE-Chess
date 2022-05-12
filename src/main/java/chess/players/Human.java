@@ -11,9 +11,12 @@ import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Human extends Player {
 
+    private static final Logger logger = LogManager.getLogger(Game.class);
     public Human(Color color) {
         super(PlayerType.Human,color);
     }
@@ -47,6 +50,7 @@ public class Human extends Player {
                 else {
                     game.playTurn(source, dest);
                 }
+                logger.info(game.getCurrentTurn().getColor().toString()+"True");
                     return true;
             }
         }
@@ -55,14 +59,17 @@ public class Human extends Player {
             if (move.getValue() == dest) {
                 if(GameUtils.isInCheck(game.getBoard().getCells(), game.getCurrentTurn().getColor())){
                     System.out.println("Your king is in check! Save him.");
+                    logger.info(game.getCurrentTurn().getColor().toString()+"False");
                     return false;
                 }
                 System.out.println("The move made puts king in danger! Please try another move.");
+                logger.info(game.getCurrentTurn().getColor().toString()+"False");
                 return false;
             }
         }
 
         System.out.println("Selected piece can't reach the destination! Please try again.");
+        logger.info(game.getCurrentTurn().getColor().toString()+"False");
         return false;
     }
 
