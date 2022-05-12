@@ -166,7 +166,7 @@
                         <configuration>
                             <archive>
                                 <manifest>
-                                    <mainClass>gui.ChessGUI</mainClass>
+                                    <mainClass>chess.gui.ChessGUI</mainClass>
                                 </manifest>
                             </archive>
                             <descriptorRefs>
