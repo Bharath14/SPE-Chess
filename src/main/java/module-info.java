@@ -1,4 +1,4 @@
-module gui {
+module chess.gui {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -11,6 +11,6 @@ module gui {
     requires eu.hansolo.tilesfx;
     requires org.apache.logging.log4j;
 
-    opens gui to javafx.fxml;
-    exports gui;
+    opens chess.gui to javafx.fxml;
+    exports chess.gui;
 }
