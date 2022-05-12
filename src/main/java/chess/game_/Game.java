@@ -246,6 +246,7 @@ public class Game{
             }
         }
         this.addToMoveHistory(new Pair<>(new Cell(source),new Cell(destination)));
+        logger.info(source.getPiece().getType().toString()+source.getPiece().getColor().toString());
         this.makeMove(source,destination);
         //we need to send deep copies of cells so that we can check those move (i.e cells) later even after board changes
 
@@ -253,7 +254,6 @@ public class Game{
         this.changeCurrentTurn();
         //System.out.println(this.getCurrentTurn().toCharacter());
         //System.out.println("Color Change");
-        logger.info(source.getPiece().getType().toString()+source.getPiece().getColor().toString());
         GameUtils.checkStatus(this);
         this.storeToHistory();
         //System.out.println("e");
